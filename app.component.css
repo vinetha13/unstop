@@ -1,0 +1,20 @@
+.booked-seats {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.booked-seats h3 {
+  color: #007BFF;
+}
+
+/* Button hover effect for available seats */
+button:hover:not(.booked) {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Booked button styling */
+button.booked {
+  background-color: red; /* Red for booked seats */
+  cursor: not-allowed;
+}
