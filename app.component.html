@@ -1,0 +1,31 @@
+<div class="container">
+<h1>Train Seat Reservation</h1>
+
+<!-- Seat grid layout -->
+<div class="grid">
+  <div *ngFor="let row of rows; let i = index" class="row">
+    <button *ngFor="let seat of row" 
+            [ngClass]="{'booked': seat.booked}" 
+            (click)="bookSeats(i, seat)"
+            [disabled]="seat.booked">
+      {{ seat.number }}
+    </button>
+  </div>
+</div>
+
+<!-- Input section to reserve seats -->
+<div class="input-section">
+  <input [(ngModel)]="numSeats" placeholder="Enter number of seats" type="number" min="1" max="7">
+  <button (click)="reserveSeats()">Reserve Seats</button>
+</div>
+
+<!-- Display seat numbers booked in the current reservation -->
+<div *ngIf="bookedSeatNumbers.length > 0" class="booked-seats">
+  <h3>Seats reserved for you:</h3>
+  <p>{{ bookedSeatNumbers.join(', ') }}</p>
+</div>
+
+<!-- Display error and success messages -->
+<p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+<p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+</div>
